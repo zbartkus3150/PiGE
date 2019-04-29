@@ -1,0 +1,21 @@
+﻿<Window x:Class="Wpf_Lab2_Wed.SlidesWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Lab2_Wed"
+        mc:Ignorable="d"
+        Title="SlideshowWindow" Height="768" Width="1024"
+        WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" ShowInTaskbar="False" MouseRightButtonDown="ShowRightClickMenu" Name="slideswindowwindow">
+    <Window.Resources>
+        <ContextMenu x:Key="rightClickMenu">
+            <MenuItem Header="Play/Pause slideshow" Click="PlayPause" />
+            <MenuItem Header="Exit slideshow" Click="CloseWindow" />
+        </ContextMenu>
+        <local:ImgConverter x:Key="imgconverter"/>
+    </Window.Resources>
+    <Grid>
+        <Image Name="nextslides" Stretch="Fill"  Width="1024" Height="768" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+        <Image Name="slide" Stretch="Fill" Width="1024" Height="768" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+    </Grid>
+</Window>

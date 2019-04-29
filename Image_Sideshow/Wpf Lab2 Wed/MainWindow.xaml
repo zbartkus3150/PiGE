@@ -1,0 +1,170 @@
+﻿<Window x:Class="Wpf_Lab2_Wed.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf_Lab2_Wed"
+        mc:Ignorable="d"
+        Title="WPF lab 2" Height="600" Width="800" MinHeight="600" MinWidth="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <local:ImgConverter x:Key="imgconverter"/>
+        
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+        <DockPanel Grid.ColumnSpan="2">
+            <Menu DockPanel.Dock="Top" >
+                <MenuItem Header="_File" Height="20" >
+                    <MenuItem Header="_Open File..." Click="MenuOpen_Click"/>
+                    <Separator />
+                    <MenuItem Header="_Exit" Click="MenuExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="_Start slideshow" Height="20" Name="startslideshowMenuItem" ItemsSource="{Binding}">
+                    <!--<MenuItem.ItemTemplate >
+                        <DataTemplate>
+                            <MenuItem Header="{Binding Path=Name}" Click="MenuItem_Click_1" />
+                        </DataTemplate>
+                    </MenuItem.ItemTemplate>-->
+                    <MenuItem.ItemContainerStyle>
+                        <Style TargetType="MenuItem">
+                            <Setter Property="Header" Value="{Binding Path=Name}"/>
+                            <EventSetter Event="Click" Handler="MenuItem_Click_1"/>
+                        </Style>
+                    </MenuItem.ItemContainerStyle>
+                </MenuItem>
+                <MenuItem Header="_About" Height="20" Click="MenuAbout_Click"/>
+            </Menu>
+        </DockPanel>
+
+        <Border BorderThickness="1" Grid.Row="1" BorderBrush="Black" Grid.Column="1" Margin="5"/>
+        <ScrollViewer Grid.Column="0" Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+            <Border  BorderBrush="Black" BorderThickness="1" Margin="5" Grid.Column="0" Grid.Row="1">
+                <Grid Grid.Column="0" Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Expander Grid.Row="0" Margin="5" Header="Explorer" IsExpanded="True">
+                        <TreeView Name="trvMenu" Margin="5" MinWidth="160" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" BorderBrush="Black" BorderThickness="1" Background="WhiteSmoke" SelectedItemChanged="TrvMenu_SelectedItemChanged" />
+                    </Expander>
+                    <Expander Grid.Row="1" Margin="5" Name="fileinfoExpander" Header="File Info">
+                        <Expander.Style>
+                            <Style TargetType="Expander">
+                                <Setter Property="Content">
+                                    <Setter.Value>
+                                        <Border ScrollViewer.HorizontalScrollBarVisibility="Hidden" Name="groupbox" Margin="5" VerticalAlignment="Top" MaxHeight="150" BorderBrush="Black" BorderThickness="1" Background="WhiteSmoke">
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*"/>
+                                                    <ColumnDefinition Width="*"/>
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                    <RowDefinition Height="Auto"/>
+                                                </Grid.RowDefinitions>
+
+                                                <Label Content="File Name:" Margin="5,0,0,0" FontWeight="Bold" Grid.Row="0" Grid.Column="0"/>
+                                                <TextBlock Grid.Row="0" Margin="8,5,5,5" Grid.Column="1" Text="{Binding Name}" Width="{Binding ElementName=filenameLabel, Path=ActualWidth}" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" />
+                                                <Label Content="Width:" Margin="5,0,0,0" FontWeight="Bold" Grid.Row="1" Grid.Column="0"/>
+                                                <TextBlock Grid.Row="1" Margin="5" Grid.Column="1" Text="{Binding Width, StringFormat=' {0} px'}"/>
+                                                <Label Content="Height:" Margin="5,0,0,0" FontWeight="Bold" Grid.Row="2" Grid.Column="0"/>
+                                                <TextBlock Grid.Row="2" Margin="5" Grid.Column="1" Text="{Binding Height, StringFormat=' {0} px'}"/>
+                                                <Label Content="Size:" Margin="5,0,0,0" FontWeight="Bold" Grid.Row="3" Grid.Column="0"/>
+                                                <TextBlock Grid.Row="3" Margin="5" Grid.Column="1" Text="{Binding Size, StringFormat=' {0} KB'}"/>
+                                            </Grid>
+                                        </Border>
+                                    </Setter.Value>
+                                </Setter>
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsSelectedXD, Source={x:Static local:MyDataSource.Instance}}" Value="False">
+                                        <Setter Property="Content">
+                                            <Setter.Value>
+                                                <Border VerticalAlignment="Top" MaxHeight="150" Margin="5" BorderBrush="Black" BorderThickness="1" Background="WhiteSmoke">
+                                                    <Label Margin="4" Content="No file selected!" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                                </Border>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Expander.Style>
+                    </Expander>
+                    <Expander Grid.Row="2" Margin="5" Name="slideshowExpander" Header="Slideshow" >
+                        <Border Name="slideshowExpanderBorder" Margin="5" BorderBrush="Black" VerticalAlignment="Top" MaxHeight="150" BorderThickness="1" Background="WhiteSmoke">
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                    <RowDefinition Height="Auto" />
+                                </Grid.RowDefinitions>
+                                <TextBlock Text="Select slideshow effect:"  FontWeight="Bold" FontSize="14" HorizontalAlignment="Center" Margin="5,10,0,5" TextTrimming="CharacterEllipsis" />
+                                <Border Name="resizeSlideshowElem" Visibility="Hidden" Grid.Row="1" Margin="10,10,10,5"/>
+                                <ComboBox Name="effectComboBox" IsEditable="False" Grid.Row="1" HorizontalAlignment="Center" Margin="5,10,5,5" Width="{Binding ActualWidth, ElementName=resizeSlideshowElem}" Height="25" SelectedIndex="0" ItemsSource="{Binding}">
+                                    <!--<ComboBox.Style>
+                                        <Style>
+                                            <Setter Property="TextSearch.TextPath" Value="Name"/>
+                                        </Style>
+                                    </ComboBox.Style>
+                                    <ComboBox.ItemContainerStyle>
+                                        <Style TargetType="ComboBoxItem">
+                                            <Setter Property="Content" Value="{Binding Path=Name}"/>
+                                        </Style>
+                                    </ComboBox.ItemContainerStyle>-->
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <TextBlock Text="{Binding Path=Name}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Button Content="Start slideshow" Grid.Row="2" HorizontalAlignment="Center" Margin="5,5,5,10" Width="{Binding ActualWidth, ElementName=resizeSlideshowElem}" Height="30" Click="StartShow_Click" />
+                            </Grid>
+                        </Border>
+                    </Expander>
+                </Grid>
+            </Border>
+        </ScrollViewer>
+        <Border BorderThickness="0.5" Grid.Row="1" Grid.Column="1" BorderBrush="Black" Margin="5" >
+            <Grid>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Hidden" Grid.Row="1" ItemsSource="{Binding}" Name="sourceListView" SelectionChanged="SourceListView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate >
+                            <StackPanel Orientation ="Horizontal" Width ="Auto" Height ="Auto">
+                                <Grid>
+                                    <Border BorderThickness="1" BorderBrush="LightGray" Width="200" Height="200" Margin="5,5,5,5">
+                                        <Border.Effect>
+                                            <DropShadowEffect/>
+                                        </Border.Effect>
+                                    </Border>
+                                    <Border BorderThickness="1" BorderBrush="LightGray" Width="200" Height="200" Margin="5,5,5,5">
+                                        <Grid>
+                                            <Rectangle Fill="White" />
+                                            <Image Source="{Binding FullPath, Converter={StaticResource imgconverter}}" Width="140" Height="140" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                            <Label Content="{Binding Name}" HorizontalAlignment="Center" VerticalAlignment="Bottom" Margin="0,0,0,5" Visibility="Visible" />
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </StackPanel >
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                    <ListView.ItemsPanel >
+                        <ItemsPanelTemplate >
+                            <WrapPanel Width ="{ Binding ActualWidth , RelativeSource ={ RelativeSource AncestorType = ListView }}"/>
+                        </ItemsPanelTemplate >
+                    </ListView.ItemsPanel >
+                </ListView>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
+    

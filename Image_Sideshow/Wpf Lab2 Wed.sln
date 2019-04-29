@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.421
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Wpf Lab2 Wed", "Wpf Lab2 Wed\Wpf Lab2 Wed.csproj", "{73E20E66-FDB4-49CA-8EBE-CFB0200D4B9E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ISlideshowEffect", "ISlideshowEffect\ISlideshowEffect.csproj", "{923A92D6-4C0C-435B-88BC-825465D287E3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HorizontalEffectPlugin", "HorizontalEffectPlugin\HorizontalEffectPlugin.csproj", "{B50CFABD-1972-4235-834D-C452AE56B610}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VerticalEffectPlugin", "VerticalEffectPlugin\VerticalEffectPlugin.csproj", "{FF304E89-0B3A-4D2C-A5D3-E3E6942B6BA1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpacityEffectPlugin", "OpacityEffectPlugin\OpacityEffectPlugin.csproj", "{62288B76-3AC4-4544-B212-749BEFF40C39}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{73E20E66-FDB4-49CA-8EBE-CFB0200D4B9E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73E20E66-FDB4-49CA-8EBE-CFB0200D4B9E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73E20E66-FDB4-49CA-8EBE-CFB0200D4B9E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73E20E66-FDB4-49CA-8EBE-CFB0200D4B9E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{923A92D6-4C0C-435B-88BC-825465D287E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{923A92D6-4C0C-435B-88BC-825465D287E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{923A92D6-4C0C-435B-88BC-825465D287E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{923A92D6-4C0C-435B-88BC-825465D287E3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B50CFABD-1972-4235-834D-C452AE56B610}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B50CFABD-1972-4235-834D-C452AE56B610}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B50CFABD-1972-4235-834D-C452AE56B610}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B50CFABD-1972-4235-834D-C452AE56B610}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FF304E89-0B3A-4D2C-A5D3-E3E6942B6BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FF304E89-0B3A-4D2C-A5D3-E3E6942B6BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FF304E89-0B3A-4D2C-A5D3-E3E6942B6BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FF304E89-0B3A-4D2C-A5D3-E3E6942B6BA1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62288B76-3AC4-4544-B212-749BEFF40C39}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62288B76-3AC4-4544-B212-749BEFF40C39}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62288B76-3AC4-4544-B212-749BEFF40C39}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62288B76-3AC4-4544-B212-749BEFF40C39}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C139C70A-9754-4D62-AB5C-C2B81E0766F8}
+	EndGlobalSection
+EndGlobal
